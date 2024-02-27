@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vite + Vue</title>
+</head>
+
+<body>
+  <div id="app"></div>
+  <!-- <script src="./src/HexExercise_toHtml" async></script> -->
+  <script>
+    function injectMathJax() {
+      if (!window.MathJax) {
+        const script = document.createElement('script')
+        script.src =
+          'https://cdn.bootcdn.net/ajax/libs/mathjax/3.2.0/es5/tex-chtml.js'
+        script.async = true
+        document.head.appendChild(script)
+      }
+    }
+
+    function initMathJax(callback) {
+      injectMathJax()
+      window.MathJax = {
+        options: {
+          // 跳过渲染的标签
+          skipHtmlTags: ['noscript', 'style', 'textarea', 'pre', 'code'],
+          // 跳过mathjax处理的元素的类名，任何元素指定一个类 tex2jax_ignore 将被跳过，多个累=类名'class1|class2'
+          ignoreHtmlClass: 'tex2jax_ignore',
+        },
+        startup: {
+          // 当mathjax加载并初始化完成后的回调
+          pageReady: () => {
+            console.log('pageReady');
+          },
+        },
+      }
+    }
+
+    initMathJax()
+  </script>
+  <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>
